@@ -1,0 +1,23 @@
+install:
+  - set QTDIR=C:\Qt\5.9.2\mingw53_32
+  - set PATH=%PATH%;%QTDIR%\bin;C:\MinGW\bin
+build_script:
+  - cd CorgiDS
+  - qmake CorgiDS.pro
+  - mingw32-make
+after_build:
+  - del /S *.o
+  - del /S *.cpp
+  - del /S *.h
+  - C:\Qt\5.9.2\mingw53_32\bin\windeployqt.exe C:\projects\corgids-1dqgo\CorgiDS\release
+  - xcopy C:\Qt\5.9.2\mingw53_32\bin\libwinpthread-1.dll C:\projects\corgids-1dqgo\CorgiDS\release
+artifacts: 
+  - path: CorgiDS\release
+    name: release
+deploy:
+    provider: GitHub
+    auth_token:
+      secure: 1shBeF0MANsWhNSxaiiw98elI21rU8leMhmoXYaRcBV+KPDsqeBX/wjzNKyYy1Ws
+    artifact: release
+    draft: false
+    prerelease: false
