@@ -9,3 +9,9 @@ script:
  - qmake CorgiDS.pro
  - make
  - ls
+
+deploy:
+  provider: releases
+  api_key: ${GITHUB_API_KEY}
+  file_glob: true
+  file: CorgiDS
