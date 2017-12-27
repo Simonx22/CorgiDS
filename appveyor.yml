@@ -9,8 +9,10 @@ after_build:
   - del /S *.o
   - del /S *.cpp
   - del /S *.h
-  - C:\Qt\5.9.2\mingw53_32\bin\windeployqt.exe C:\projects\corgids-1dqgo\CorgiDS\release
-  - xcopy C:\Qt\5.9.2\mingw53_32\bin\libwinpthread-1.dll C:\projects\corgids-1dqgo\CorgiDS\release
+  - C:\Qt\5.9.2\mingw53_32\bin\windeployqt.exe C:\projects\corgids\CorgiDS\release
+  - xcopy C:\Qt\5.9.2\mingw53_32\bin\libwinpthread-1.dll C:\projects\corgids\CorgiDS\release /d
+  - xcopy C:\Qt\5.9.2\mingw53_32\bin\libgcc_s_dw2-1.dll C:\projects\corgids\CorgiDS\release /d
+  - xcopy C:\Qt\5.9.2\mingw53_32\bin\libstdc++-6.dll C:\projects\corgids\CorgiDS\release /d
 artifacts: 
   - path: CorgiDS\release
     name: release
@@ -21,5 +23,3 @@ deploy:
     artifact: release
     draft: false
     prerelease: false
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
