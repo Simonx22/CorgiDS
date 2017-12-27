@@ -7,6 +7,7 @@ CorgiDS requires Qt 5.9 and currently supports qmake and meson. Please report an
 ### Known issues
 On Windows, builds compiled with Visual Studio fail to boot any games and display a gray screen during execution. For now, use mingw instead.
 
+
 ### Building with qmake
 ```
 cd CorgiDS/CorgiDS
