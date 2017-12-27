@@ -10,9 +10,9 @@ after_build:
   - del /S *.cpp
   - del /S *.h
   - C:\Qt\5.9.2\mingw53_32\bin\windeployqt.exe CorgiDS\release
-  - xcopy C:\Qt\5.9.2\mingw53_32\bin\libwinpthread-1.dll CorgiDS\release /d
-  - xcopy C:\Qt\5.9.2\mingw53_32\bin\libgcc_s_dw2-1.dll qmake CorgiDS.pro /d
-  - xcopy C:\Qt\5.9.2\mingw53_32\bin\libstdc++-6.dll qmake CorgiDS.pro /d
+  - xcopy C:\Qt\5.9.2\mingw53_32\bin\libwinpthread-1.dll %APPVEYOR_BUILD_FOLDER%\CorgiDS\release /d
+  - xcopy C:\Qt\5.9.2\mingw53_32\bin\libgcc_s_dw2-1.dll %APPVEYOR_BUILD_FOLDER%\CorgiDS\release /d
+  - xcopy C:\Qt\5.9.2\mingw53_32\bin\libstdc++-6.dll %APPVEYOR_BUILD_FOLDER%\CorgiDS\release /d
 artifacts: 
   - path: CorgiDS\release
     name: release
