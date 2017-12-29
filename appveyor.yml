@@ -22,3 +22,4 @@ deploy:
     artifact: release
     draft: false
     prerelease: false
+
