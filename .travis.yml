@@ -9,7 +9,7 @@ script:
  - cd CorgiDS
  - qmake CorgiDS.pro
  - make
- - zip -r CorgiDS_macOS.zip CorgiDS.app
+ - zip -r -X CorgiDS_macOS.zip CorgiDS.app
  - ls
 
 deploy:
