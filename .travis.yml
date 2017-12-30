@@ -1,6 +1,13 @@
 os: 
   - osx
   - linux
+  
+matrix: 
+  include:
+    - os: linux
+      env: DEPLOY_FILE=corgids-linux.zip
+    - os: osx
+      env: DEPLOY_FILE=corgids-mac.zip
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install qt5; fi
@@ -22,7 +29,7 @@ script:
 deploy:
  provider: releases
  api_key: $GITHUB_OAUTH_TOKEN
- file: corgids-linux.zip
+ file: $DEPLOY_FILE
  skip_cleanup: true
  on:
    tags: true
