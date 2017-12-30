@@ -10,13 +10,13 @@ script:
  - qmake CorgiDS.pro
  - make
  - macdeployqt CorgiDS.app
- - zip -r -X CorgiDS_macOS.zip CorgiDS.app
+ - zip -r -X corgids-mac.zip CorgiDS.app
  - ls
 
 deploy:
   provider: releases
   api_key: $GITHUB_OAUTH_TOKEN
-  file: CorgiDS_macOS.zip
+  file: corgids-mac.zip
   skip_cleanup: true
   on:
     tags: true
