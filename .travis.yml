@@ -1,47 +1,25 @@
-os:
+os: 
   - osx
   - linux
 
-os: osx
-
 before_install:
- - brew install qt5
- - brew link qt5 --force
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install qt5; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew link qt5 --force; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -qq; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev libsqlite3-dev; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install qt5-default qttools5-dev-tools; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install qtmultimedia5-dev libqt5multimediawidgets5 libqt5multimedia5-plugins libqt5multimedia5; fi
 
 script:
  - cd CorgiDS
  - qmake CorgiDS.pro
  - make
- - macdeployqt CorgiDS.app
- - zip -r -X corgids-mac.zip CorgiDS.app
- - ls
-
-deploy:
-  provider: releases
-  api_key: $GITHUB_OAUTH_TOKEN
-  file: corgids-mac.zip
-  skip_cleanup: true
-  on:
-    tags: true
-    all_branches: true
-
-
-os: linux
-
-before_install:
- - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
- - sudo apt-get update -qq
- - sudo apt-get install qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev libsqlite3-dev
- - sudo apt-get install qt5-default qttools5-dev-tools
- - sudo apt-get install qtmultimedia5-dev libqt5multimediawidgets5 libqt5multimedia5-plugins libqt5multimedia5
-
-script:
- - cd CorgiDS
- - qmake CorgiDS.pro
- - make
- - zip corgids-linux.zip CorgiDS
-
-deploy:
+ - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then macdeployqt CorgiDS.app; fi
+ - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip -r -X corgids-mac.zip CorgiDS.app; fi
+ - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip corgids-linux.zip CorgiDS; fi
+ 
+ deploy:
   provider: releases
   api_key: $GITHUB_OAUTH_TOKEN
   file: corgids-linux.zip
