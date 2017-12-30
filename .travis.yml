@@ -1,3 +1,7 @@
+os:
+  - osx
+  - linux
+
 os: osx
 
 before_install:
