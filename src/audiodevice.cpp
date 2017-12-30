@@ -7,12 +7,16 @@ AudioDevice::AudioDevice(QObject *parent) : QIODevice(parent), spu(nullptr)
 
 qint64 AudioDevice::readData(char *data, qint64 maxlen)
 {
-    for (int i = 0; i < 1024; i += 2)
+    if (spu->get_samples())
     {
-        *(int16_t*)&data[i] = i;
-        *(int16_t*)&data[i + 1] = i;
+        for (int i = 0; i < 1024; i += 2)
+        {
+            *(int16_t*)&data[i] = i;
+            *(int16_t*)&data[i + 1] = i;
+        }
+        return 1024;
     }
-    return 1024;
+    return 0;
     //return spu->output_buffer((int16_t*)data) * 2;
 }
 
