@@ -8,7 +8,7 @@ using namespace std;
 
 Debugger::Debugger(Emulator* e) : e(e)
 {
-    memset(exec_region, 0, 1024 * 1024 * 4);
+    // memset(exec_region, 0, 1024 * 1024 * 4);
 }
 
 void Debugger::mark_as_data(uint32_t address)
