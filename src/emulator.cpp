@@ -340,6 +340,7 @@ void Emulator::run_gba()
     gpu.start_frame();
     while (!gpu.is_frame_complete())
     {
+        if ((arm7.get_register(REG_PC) - 4) == 0x08150600) debug();
         arm7.execute();
         uint64_t cycle_count = arm7.cycles_ran();
 
