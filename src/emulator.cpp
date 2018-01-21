@@ -358,7 +358,7 @@ void Emulator::start_gba_mode(bool throw_exception)
     power_on();
     WAITCNT = 0;
     gba_mode = true;
-    arm7.gba_boot(true);
+    arm7.gba_boot(false);
     //debug();
     //Allocate VRAM C and D as 256 KB work RAM
     gpu.set_VRAMCNT_C(0x82);
