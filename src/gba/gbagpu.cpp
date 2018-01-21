@@ -40,6 +40,7 @@ void GPU::gba_run(uint64_t c)
         new_cycles -= 1232;
     }
     cycles = new_cycles;
+    printf("\nCycles: %lld", cycles);
 }
 
 void GPU_2D_Engine::gba_draw_scanline()
