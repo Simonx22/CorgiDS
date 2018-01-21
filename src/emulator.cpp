@@ -293,6 +293,7 @@ void Emulator::mark_as_thumb(uint32_t address)
 
 void Emulator::debug()
 {
+    arm7.print_info(
     //printf("\nIE9: $%08X IF9: $%08X", int9_reg.IE, int9_reg.IF);
     //printf("\nIE7: $%08X IF7: $%08X", int7_reg.IE, int7_reg.IF);
     //debugger.dump_disassembly();
@@ -340,7 +341,6 @@ void Emulator::run_gba()
     gpu.start_frame();
     while (!gpu.is_frame_complete())
     {
-        if ((arm7.get_register(REG_PC) - 4) == 0x08150600) debug();
         arm7.execute();
         uint64_t cycle_count = arm7.cycles_ran();
 
