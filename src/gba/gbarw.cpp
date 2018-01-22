@@ -345,24 +345,6 @@ void Emulator::gba_write_halfword(uint32_t address, uint16_t halfword)
             return;
         case 0x04000204:
         {
-            WAITCNT = halfword;
-
-            //Update waitstates
-            static const int SRAM_states[] = {4, 3, 2, 8};
-            int SRAM_state = SRAM_states[WAITCNT & 0x3];
-            arm7.update_code_waitstate(0xE, SRAM_state, SRAM_state, SRAM_state, SRAM_state);
-            arm7.update_data_waitstate(0xE, SRAM_state, SRAM_state, SRAM_state, SRAM_state);
-
-            static const int wait0n_states[] = {4, 3, 2, 8};
-            static const int wait0s_states[] = {2, 1};
-            int wait0n = wait0n_states[(WAITCNT >> 2) & 0x3];
-            int wait0s = wait0s_states[WAITCNT & (1 << 4)];
-
-            for (int i = 8; i < 0xA; i++)
-            {
-                arm7.update_code_waitstate(i, wait0n * 2, wait0s * 2, wait0n, wait0s);
-                arm7.update_data_waitstate(i, wait0n * 2, wait0s * 2, wait0n, wait0s);
-            }
         }
             return;
         case 0x04000208:
