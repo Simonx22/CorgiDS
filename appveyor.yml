@@ -12,6 +12,7 @@ build_script:
   - xcopy C:\Qt\5.9.2\mingw53_32\bin\libwinpthread-1.dll %APPVEYOR_BUILD_FOLDER%\CorgiDS\release /d
   - xcopy C:\Qt\5.9.2\mingw53_32\bin\libgcc_s_dw2-1.dll %APPVEYOR_BUILD_FOLDER%\CorgiDS\release /d
   - xcopy C:\Qt\5.9.2\mingw53_32\bin\libstdc++-6.dll %APPVEYOR_BUILD_FOLDER%\CorgiDS\release /d
+  - xcopy %APPVEYOR_BUILD_FOLDER%\LICENSE %APPVEYOR_BUILD_FOLDER%\CorgiDS\release /d
 artifacts: 
   - path: CorgiDS\release
     name: corgids-win32
