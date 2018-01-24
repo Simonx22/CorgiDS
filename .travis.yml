@@ -17,12 +17,13 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install qtmultimedia5-dev libqt5multimediawidgets5 libqt5multimedia5-plugins libqt5multimedia5; fi
 
 script:
+  - cp LICENSE /CorgiDS/
   - cd CorgiDS
   - qmake CorgiDS.pro
   - make
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then macdeployqt CorgiDS.app; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip -r -X corgids-mac.zip CorgiDS.app; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip corgids-linux.zip CorgiDS; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip -r -X corgids-mac.zip CorgiDS.app LICENSE; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip corgids-linux.zip CorgiDS LICENSE; fi
  
 deploy:
  provider: releases
