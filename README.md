@@ -1,16 +1,3 @@
-# lemonbot merge log
-
-Scroll down for the original README.md!
-
-======
-
-| PR   | Ref   | Commit   | Author   | Status   |
-||
-
-End of merge log. You can find the original README.md below the break.
-
-======
-
 # CorgiDS
 A DS emulator that seeks to combine accuracy and speed. As of v0.1, it's a long way from either one, but with your support, CorgiDS will accomplish its goals.
 
