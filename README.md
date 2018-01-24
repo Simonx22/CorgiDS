@@ -1,4 +1,8 @@
 # CorgiDS
+
+[![Build status](https://ci.appveyor.com/api/projects/status/qruq3o3j6vnwvvf8?svg=true)](https://ci.appveyor.com/project/Simonx22/corgids)
+[![Build Status](https://travis-ci.org/Simonx22/CorgiDS.svg?branch=master)](https://travis-ci.org/Simonx22/CorgiDS)
+
 A DS emulator that seeks to combine accuracy and speed. As of v0.1, it's a long way from either one, but with your support, CorgiDS will accomplish its goals.
 
 ## Compiling
