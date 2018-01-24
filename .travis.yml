@@ -17,7 +17,7 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install qtmultimedia5-dev libqt5multimediawidgets5 libqt5multimedia5-plugins libqt5multimedia5; fi
 
 script:
-  - cp LICENSE /CorgiDS
+  - sudo cp LICENSE /CorgiDS
   - cd CorgiDS
   - qmake CorgiDS.pro
   - make
