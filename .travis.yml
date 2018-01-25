@@ -22,7 +22,7 @@ script:
   - make
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then macdeployqt CorgiDS.app; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo cp $TRAVIS_BUILD_DIR/LICENSE .; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip -r corgids-mac.zip . -i CorgiDS.app LICENSE; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip -r corgids-mac.zip CorgiDS.app LICENSE; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip corgids-linux.zip CorgiDS $TRAVIS_BUILD_DIR/LICENSE; fi
 
  
