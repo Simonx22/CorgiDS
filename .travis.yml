@@ -21,8 +21,10 @@ script:
   - qmake CorgiDS.pro
   - make
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then macdeployqt CorgiDS.app; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip -r -X corgids-mac.zip CorgiDS.app $TRAVIS_BUILD_DIR/LICENSE; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; sudo cp $TRAVIS_BUILD_DIR/LICENSE .; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip -r corgids-mac.zip . -i CorgiDS.app LICENSE; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip corgids-linux.zip CorgiDS $TRAVIS_BUILD_DIR/LICENSE; fi
+
  
 deploy:
  provider: releases
